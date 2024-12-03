@@ -48,9 +48,9 @@ async def get_recipient(message: Message, state: FSMContext):
 async def get_message_to_user(message: Message, state: FSMContext):
     user_data = await state.get_data()
     recipient = user_data.get("recipient")
-    message = message.text.strip()
+    message_to_user = message.text.strip()
     try:
-        await bot.send_message(chat_id=recipient,text=message)
+        await bot.send_message(chat_id=recipient,text=message_to_user)
         await message.answer("Сообщение успешно доставлено")
         print(f"user {message.from_user.username} send message to {recipient}")
     except Exception as ex:
